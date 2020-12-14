@@ -18,7 +18,7 @@ class Snowflake {
   angleVel: number = 0;
   size: number = 0;
 
-  constructor(public width: number, public height: number, public ctx: CanvasRenderingContext2D) {
+  constructor(public width: number, public height: number, public ctx: CanvasRenderingContext2D, public id: number) {
     this.spawn();
   }
 
@@ -35,7 +35,7 @@ class Snowflake {
 
   update(now: number) {
     const xForce = rand(-0.001, 0.001);
-    const elapsed = (now - this._elapsed) / 60;
+    const delta = Math.min((now - this._elapsed) / 60, 60);
 
     if (Math.abs(this.xVel + xForce) < 0.075) {
       this.xVel += xForce;
@@ -45,9 +45,9 @@ class Snowflake {
       this.xVel = this._maxVel;
     }
 
-    this.x += this.xVel * elapsed;
-    this.y += this.yVel * elapsed;
-    this.angle += this.xVel * 0.05 * elapsed;
+    this.x += this.xVel * delta;
+    this.y += this.yVel * delta;
+    this.angle += this.xVel * 0.05 * delta;
 
     if (this.y - this.size > this.height || this.x + this.size < 0 || this.x - this.size > this.width) {
       this.spawn();
@@ -59,7 +59,6 @@ class Snowflake {
   render() {
     this.ctx.save();
     const { x, y, angle, size } = this;
-    // console.log(normalize(size, 0.5, 1));
     this.ctx.beginPath();
     this.ctx.arc(x, y, size * 0.2, 0, Math.PI * 2, false);
     this.ctx.fillStyle = `rgba(255, 255, 255, ${normalize(size, 5, 22, 0.75)})`;
@@ -109,7 +108,7 @@ export default function Snow() {
       if (ctx) {
         ctx.clearRect(0, 0, width, height);
         if (snowFlakes.length < maxSnowflakes) {
-          snowFlakes.push(new Snowflake(width, height, ctx));
+          snowFlakes.push(new Snowflake(width, height, ctx, snowFlakes.length + 1));
         }
 
         snowFlakes.forEach((snowflake) => snowflake.update(now));
