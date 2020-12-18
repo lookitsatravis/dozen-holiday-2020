@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/tree.css';
 
+// Original source/idea: https://codemyui.com/christmas-tree-animation/
 export default function Tree() {
   return (
     <div className="container">

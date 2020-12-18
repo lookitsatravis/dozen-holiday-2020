@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/header.css';
 
+// Original source/idea: https://codemyui.com/css-only-candy-cane-text-animation/
 export default function Header() {
   const title = 'Dozen Elefante Blanco';
 

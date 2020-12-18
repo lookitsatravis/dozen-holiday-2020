@@ -67,6 +67,7 @@ class Snowflake {
   }
 }
 
+// Original source/idea: https://codemyui.com/snowfall-background-animation-using-canvas/
 export default function Snow() {
   const windowSize = useWindowSize();
   const [width, setWidth] = useState(windowSize.width);

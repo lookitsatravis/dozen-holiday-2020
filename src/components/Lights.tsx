@@ -5,6 +5,7 @@ interface LightsProps {
   count?: number;
 }
 
+// Original source/idea: https://codemyui.com/christmas-lights-pure-css/
 export default function Lights({ count = 50 }: LightsProps) {
   const lights = new Array(count).fill(0);
 

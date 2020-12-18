@@ -11,6 +11,7 @@ export interface GiftProps {
   gifts: Gift[];
 }
 
+// Original source/idea: https://codemyui.com/christmassy-tags-flip-hover/
 export default function Gifts({ gifts }: GiftProps) {
   const renderTopShape = (style: string) => {
     switch (style) {
