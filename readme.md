@@ -4,17 +4,17 @@ https://dozen-holiday-2020.vercel.app/
 
 ## Requirements
 
-NodeJS 12+
-Yarn 1
+- NodeJS 12+
+- Yarn 1
 
 ## Local Development
 
-`yarn install`
-`yarn start`
+- `yarn install`
+- `yarn start`
 
 ## Build
 
-`yarn build`
+- `yarn build`
 
 ## Deployment
 
