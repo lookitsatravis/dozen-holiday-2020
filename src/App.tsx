@@ -17,8 +17,8 @@ function App() {
     },
     {
       // https://www.amazon.com/dp/B07X3M1P3Z?tag=drawnacom-20&linkCode=osi&th=1&psc=1
-      name: 'Tortilla Blanket',
-      imageName: 'images/tortilla-blanket.jpg',
+      name: '$50 Amazon Gift Card',
+      imageName: 'images/amazon-gc.jpg',
       style: '3',
     },
     {
