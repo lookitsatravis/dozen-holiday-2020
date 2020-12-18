@@ -1,5 +1,5 @@
 import React from 'react';
-import './tree.css';
+import '../styles/tree.css';
 
 export default function Tree() {
   return (

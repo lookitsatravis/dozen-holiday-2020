@@ -1,64 +1,61 @@
 import React from 'react';
-import './gifts.css';
+import '../styles/gifts.css';
 
-export default function Gifts() {
+export interface Gift {
+  name: string;
+  imageName: string;
+  style: string;
+}
+
+export interface GiftProps {
+  gifts: Gift[];
+}
+
+export default function Gifts({ gifts }: GiftProps) {
+  const renderTopShape = (style: string) => {
+    switch (style) {
+      case '1':
+        return <div className="tag-1-top"></div>;
+      default:
+        return undefined;
+    }
+  };
+
+  const renderBottomShape = (style: string, extraClassNames: string[] = []) => {
+    switch (style) {
+      case '1':
+        return <div className={['rule-shape'].concat(extraClassNames).join(' ')}>★</div>;
+      case '2':
+        return <div className={['rule-diagonal'].concat(extraClassNames).join(' ')}></div>;
+      default:
+        return <div className={['rule-shape'].concat(extraClassNames).join(' ')}>&#10052;</div>;
+    }
+  };
+
   return (
     <div className="tags">
-      <div className="tag-container">
-        <div className="tag">
-          <div className="tag-side tag-1-side">
-            <div className="tag-1-top"></div>
-            <div className="tag-text tag-1-text">
-              <span className="question-mark">1</span>
-              <div className="rule-shape rule-red">★</div>
+      {gifts.map((gift, i) => (
+        <div className="tag-container" key={gift.name}>
+          <div className="tag">
+            <div className={['tag-side', `tag-${gift.style}-side`].join(' ')}>
+              {renderTopShape(gift.style)}
+              <div className={['tag-text', `tag-${gift.style}-text`].join(' ')}>
+                <span className="question-mark">{i + 1}</span>
+                {renderBottomShape(gift.style, gift.style === '1' ? ['rule-red'] : [])}
+              </div>
             </div>
-          </div>
 
-          <div className="tag-side tag-1-side is-back">
-            <div className="tag-1-top"></div>
-            <div className="tag-text tag-1-text">
-              Corsair K70 Mechanical Keyboard
-              <div className="rule-shape">★</div>
+            <div className={['tag-side', 'is-back', `tag-${gift.style}-side`].join(' ')}>
+              {renderTopShape(gift.style)}
+              <div className={['tag-text', 'tag-text-sm', `tag-${gift.style}-text`].join(' ')}>
+                {gift.name}
+                <img className="tag-img" src={gift.imageName} />
+                {renderBottomShape(gift.style)}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="tag-container">
-        <div className="tag">
-          <div className="tag-side tag-3-side">
-            <div className="tag-text tag-3-text">
-              <span className="question-mark">2</span>
-              <div className="rule-shape">&#10052;</div>
-            </div>
-          </div>
-
-          <div className="tag-side tag-3-side is-back">
-            <div className="tag-text tag-3-text">
-              COVID Date Night Airbnb + Door Dash Gift Cards
-              <div className="rule-shape">&#10052;</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="tag-container">
-        <div className="tag">
-          <div className="tag-side tag-2-side">
-            <div className="tag-text tag-2-text">
-              <span className="question-mark">3</span>
-              <div className="rule-diagonal"></div>
-            </div>
-          </div>
-
-          <div className="tag-side tag-2-side is-back">
-            <div className="tag-text tag-2-text">
-              Ember Smart Mug
-              <div className="rule-diagonal"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
   );
 }

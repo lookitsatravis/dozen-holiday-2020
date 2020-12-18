@@ -28,7 +28,7 @@
 }
 
 .header-back {
-  text-shadow: 0px 0px 50px rgba(255, 255, 255, 0.75);
+  text-shadow: 0px 0px 30px rgba(255, 255, 255, 0.75);
 }
 
 @keyframes moveHeaderText {
@@ -45,4 +45,16 @@
   top: 175px;
   left: calc(100vw / 2 - 200px);
   width: 400px;
+}
+
+@media (max-width: 985px) {
+  .header-img {
+    top: 285px;
+  }
+}
+
+@media (max-width: 660px) {
+  .header-img {
+    top: 400px;
+  }
 }

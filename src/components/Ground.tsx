@@ -1,10 +1,7 @@
 import React from 'react';
-import { useWindowSize } from '../hooks/useWindowSize';
-import './ground.css';
+import '../styles/ground.css';
 
 export default function Ground() {
-  const windowSize = useWindowSize();
-
   return (
     <div className="ground">
       <svg viewBox="0 0 800 600" preserveAspectRatio="none">

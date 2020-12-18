@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useWindowSize } from '../hooks/useWindowSize';
-import './snow.scss';
+import '../styles/snow.scss';
 
 const rand = (min: number, max: number) => min + Math.random() * (max - min);
 
