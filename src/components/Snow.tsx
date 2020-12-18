@@ -75,7 +75,7 @@ export default function Snow() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [snowFlakes, setSnowFlakes] = useState<Snowflake[]>([]);
   const [running, setRunning] = useState(false);
-  const maxSnowflakes = 100;
+  const maxSnowflakes = 1000;
 
   useEffect(() => {
     if (!ctx && canvasRef.current) {
